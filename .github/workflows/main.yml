@@ -1,0 +1,32 @@
+name: Job Dependency Demo
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+jobs:
+  my_first_job:
+    name: first job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: First Step
+        run: echo "my first job ran successful"
+
+      - name: Display service.yaml
+        run: cat service.yaml
+
+  my_second_job:
+    name: second job
+    needs: my_first_job
+    if: always()  #Will always run. As needs is there. 1st Job will run/fail and then second Job will run.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Second Step
+        run: echo "my second job ran successful"
