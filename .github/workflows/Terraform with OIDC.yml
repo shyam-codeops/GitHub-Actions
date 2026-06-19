@@ -1,12 +1,13 @@
 name: github action trigger practice
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-     branches:
-       - develop
-       - main
+  workflow_dispatch: 
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #    branches:
+  #      - develop
+  #      - main
 
 
 # env:
